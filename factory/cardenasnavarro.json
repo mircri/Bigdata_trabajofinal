@@ -1,0 +1,9 @@
+{
+	"name": "cardenasnavarro",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "df50cc5d-15d6-4858-87b9-fae584422109",
+		"tenantId": "db0da53e-6cf6-48ab-ba4e-d8ce4d126ac2"
+	}
+}
