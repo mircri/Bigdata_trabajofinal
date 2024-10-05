@@ -1,0 +1,98 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Nombre de instancia de Data Factory",
+			"defaultValue": "cardenasnavarro"
+		},
+		"Conector_ADLS_DataFactory_accountKey": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"accountKey\"de \"Conector_ADLS_DataFactory\""
+		},
+		"ingesta_capa_bronce_plata_accessToken": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"accessToken\"de \"ingesta_capa_bronce_plata\""
+		},
+		"ingesta_capa_bronce_plata_2_accessToken": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"accessToken\"de \"ingesta_capa_bronce_plata_2\""
+		},
+		"ingesta_capa_plata_oro_accessToken": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"accessToken\"de \"ingesta_capa_plata_oro\""
+		},
+		"Conector_ADLS_DataFactory_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ccardenasncertus.dfs.core.windows.net/"
+		},
+		"ingesta_capa_bronce_plata_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0929-205309-tlodfkvw"
+		},
+		"ingesta_capa_bronce_plata_2_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0929-205309-tlodfkvw"
+		},
+		"ingesta_capa_plata_oro_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0929-205309-tlodfkvw"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI de la cuenta de almacenamiento que contiene las plantillas de ARM vinculadas."
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Token de SAS para la cuenta de almacenamiento que contiene las plantillas de ARM vinculadas"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "cardenasnavarro_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"Conector_ADLS_DataFactory_accountKey": {
+						"value": "[parameters('Conector_ADLS_DataFactory_accountKey')]"
+					},
+					"ingesta_capa_bronce_plata_accessToken": {
+						"value": "[parameters('ingesta_capa_bronce_plata_accessToken')]"
+					},
+					"ingesta_capa_bronce_plata_2_accessToken": {
+						"value": "[parameters('ingesta_capa_bronce_plata_2_accessToken')]"
+					},
+					"ingesta_capa_plata_oro_accessToken": {
+						"value": "[parameters('ingesta_capa_plata_oro_accessToken')]"
+					},
+					"Conector_ADLS_DataFactory_properties_typeProperties_url": {
+						"value": "[parameters('Conector_ADLS_DataFactory_properties_typeProperties_url')]"
+					},
+					"ingesta_capa_bronce_plata_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('ingesta_capa_bronce_plata_properties_typeProperties_existingClusterId')]"
+					},
+					"ingesta_capa_bronce_plata_2_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('ingesta_capa_bronce_plata_2_properties_typeProperties_existingClusterId')]"
+					},
+					"ingesta_capa_plata_oro_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('ingesta_capa_plata_oro_properties_typeProperties_existingClusterId')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
