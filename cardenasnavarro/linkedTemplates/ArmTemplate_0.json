@@ -554,7 +554,8 @@
 					"recurrence": {
 						"frequency": "Minute",
 						"interval": 1,
-						"startTime": "2024-10-02T03:42:00",
+						"startTime": "2024-10-04T23:06:00",
+						"endTime": "2024-10-06T04:05:58",
 						"timeZone": "SA Pacific Standard Time"
 					}
 				}
