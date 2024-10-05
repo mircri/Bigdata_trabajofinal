@@ -14,7 +14,14 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/cristian93myc@outlook.com/ingesta_capa_bronce_plata"
+				},
+				"linkedServiceName": {
+					"referenceName": "ingesta_capa_bronce_plata",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"annotations": []
