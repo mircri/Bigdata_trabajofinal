@@ -1,0 +1,24 @@
+{
+	"name": "Automatizador",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Automatizacion_pipeline",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2024-10-05T03:42:00",
+				"timeZone": "UTC-11"
+			}
+		}
+	}
+}
