@@ -1,0 +1,70 @@
+{
+	"name": "Automatizacion_pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "ingesta_capa_bronce_plata",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "ingesta_input_capa_bronce",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "ingesta_capa_bronce_plata",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "ingesta_input_capa_bronce",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "ingesta_input_capa_bronce",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "ingesta_capa_plata_oro",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "ingesta_capa_bronce_plata",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "ingesta_capa_plata_oro",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"annotations": []
+	}
+}
