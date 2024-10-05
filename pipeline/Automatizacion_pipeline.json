@@ -3,22 +3,6 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "ingesta_capa_bronce_plata",
-				"type": "ExecutePipeline",
-				"dependsOn": [],
-				"policy": {
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"pipeline": {
-						"referenceName": "ingesta_capa_bronce_plata",
-						"type": "PipelineReference"
-					},
-					"waitOnCompletion": true
-				}
-			},
-			{
 				"name": "ingesta_input_capa_bronceplata",
 				"type": "ExecutePipeline",
 				"dependsOn": [],
