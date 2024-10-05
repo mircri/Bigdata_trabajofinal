@@ -51,11 +51,28 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "ingesta_capa_bronce_plata",
+						"name": "ingesta_input_capa_bronceplata",
+						"type": "ExecutePipeline",
+						"dependsOn": [],
+						"policy": {
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "ingesta_input_capa_bronce",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					},
+					{
+						"name": "ingesta_capa_bronceplata",
 						"type": "ExecutePipeline",
 						"dependsOn": [
 							{
-								"activity": "ingesta_input_capa_bronce",
+								"activity": "ingesta_input_capa_bronceplata",
 								"dependencyConditions": [
 									"Completed"
 								]
@@ -75,28 +92,11 @@
 						}
 					},
 					{
-						"name": "ingesta_input_capa_bronce",
-						"type": "ExecutePipeline",
-						"dependsOn": [],
-						"policy": {
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"pipeline": {
-								"referenceName": "ingesta_input_capa_bronce",
-								"type": "PipelineReference"
-							},
-							"waitOnCompletion": true,
-							"parameters": {}
-						}
-					},
-					{
 						"name": "ingesta_capa_plata_oro",
 						"type": "ExecutePipeline",
 						"dependsOn": [
 							{
-								"activity": "ingesta_capa_bronce_plata",
+								"activity": "ingesta_capa_bronceplata",
 								"dependencyConditions": [
 									"Completed"
 								]
@@ -122,8 +122,8 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/ingesta_capa_bronce_plata')]",
 				"[concat(variables('factoryId'), '/pipelines/ingesta_input_capa_bronce')]",
+				"[concat(variables('factoryId'), '/pipelines/ingesta_capa_bronce_plata')]",
 				"[concat(variables('factoryId'), '/pipelines/ingesta_capa_plata_oro')]"
 			]
 		},
@@ -534,7 +534,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Exec_proxy')]",
+			"name": "[concat(parameters('factoryName'), '/Automatizador')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -552,10 +552,11 @@
 				"type": "ScheduleTrigger",
 				"typeProperties": {
 					"recurrence": {
-						"frequency": "Minute",
-						"interval": 15,
-						"startTime": "2024-10-05T03:27:00",
-						"timeZone": "UTC-11"
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2024-10-05T03:42:00",
+						"timeZone": "SA Pacific Standard Time",
+						"schedule": {}
 					}
 				}
 			},
